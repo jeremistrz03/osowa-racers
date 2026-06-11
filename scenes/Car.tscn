@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c043bsxljyc26"]
+
+[ext_resource type="Texture2D" uid="uid://cpcu8yi7c6vhs" path="res://assets/cars-spritesheet.png" id="1_c35m8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt2eu"]
+size = Vector2(113.5, 52)
+
+[node name="car" type="Area2D" unique_id=141635981]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=835823384]
+rotation = 1.5707964
+texture = ExtResource("1_c35m8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=728759142]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_qt2eu")
