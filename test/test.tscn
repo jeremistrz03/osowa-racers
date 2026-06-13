@@ -1,17 +1,12 @@
 [gd_scene format=3 uid="uid://cqdy1inyhnd4a"]
 
-[ext_resource type="Texture2D" uid="uid://dxdrdsipfvypa" path="res://assets/obwodnica-trojmiasta-osowa-gdansk.jpg" id="1_65205"]
 [ext_resource type="PackedScene" uid="uid://c043bsxljyc26" path="res://scenes/Car.tscn" id="2_hrq6i"]
+[ext_resource type="Texture2D" uid="uid://dxdrdsipfvypa" path="res://assets/obwodnica-trojmiasta-osowa-gdansk.jpg" id="3_65205"]
 [ext_resource type="Script" uid="uid://cwdw66dyr2u8j" path="res://car2.gd" id="3_tbfq4"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_65205"]
 
 [node name="test" type="Node2D" unique_id=91051677]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1794364304]
-position = Vector2(592, 354)
-scale = Vector2(0.5861437, 0.5861437)
-texture = ExtResource("1_65205")
 
 [node name="car" parent="." unique_id=141635981 instance=ExtResource("2_hrq6i")]
 position = Vector2(372, 259)
@@ -29,3 +24,9 @@ position = Vector2(167, 145)
 rotation = -0.046904616
 scale = Vector2(26.563753, 1.3996714)
 shape = SubResource("SegmentShape2D_65205")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1928668419]
+z_index = -1
+position = Vector2(585, 347)
+scale = Vector2(0.6019062, 0.6019062)
+texture = ExtResource("3_65205")
