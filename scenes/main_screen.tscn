@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dwgtkkln76abx"]
+
+[ext_resource type="PackedScene" uid="uid://c043bsxljyc26" path="res://scenes/Car.tscn" id="1_kusfh"]
+[ext_resource type="Script" uid="uid://dtgcp3oo004v" path="res://scenes/car.gd" id="2_aum10"]
+
+[node name="main screen" type="Node2D" unique_id=145176433]
+
+[node name="car" parent="." unique_id=141635981 instance=ExtResource("1_kusfh")]
+position = Vector2(449, 510)
+script = ExtResource("2_aum10")
+
+[node name="Button" type="Button" parent="." unique_id=1299355859]
+offset_left = 340.0
+offset_top = 189.0
+offset_right = 813.0
+offset_bottom = 399.0
+text = "CLICK ME"
+
+[connection signal="pressed" from="Button" to="car" method="_on_button_pressed"]
