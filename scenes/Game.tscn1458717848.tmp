@@ -106,8 +106,13 @@ texture = ExtResource("3_aug50")
 [node name="car" parent="." unique_id=141635981 instance=ExtResource("1_ibkli")]
 visibility_layer = 2
 position = Vector2(-498.5, -573)
+acceleration_factor = 1.0
+break_speed = 1.0
+max_speed = 300.0
+turn_strength = 2.0
+most_ideal_turn_speed = 250.0
+particles = true
 
-[node name="Camera2D" type="Camera2D" parent="car" unique_id=1954177817]
-position = Vector2(1.5, 3)
-zoom = Vector2(0.595, 0.595)
-position_smoothing_enabled = true
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1954177817]
+position = Vector2(-1, -1)
+zoom = Vector2(0.275, 0.275)

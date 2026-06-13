@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://c043bsxljyc26"]
 
 [ext_resource type="Texture2D" uid="uid://cpcu8yi7c6vhs" path="res://assets/cars-spritesheet.png" id="1_c35m8"]
+[ext_resource type="Script" uid="uid://c408eaeyvxc8h" path="res://scripts/car.gd" id="1_qn377"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt2eu"]
-size = Vector2(113.5, 52)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys5ts"]
+size = Vector2(49, 111)
 
-[node name="car" type="Area2D" unique_id=141635981]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1354974025]
+script = ExtResource("1_qn377")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=835823384]
-rotation = 1.5707964
+[node name="carmesh" type="Sprite2D" parent="." unique_id=126710122]
 texture = ExtResource("1_c35m8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=728759142]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_qt2eu")
+[node name="carcol" type="CollisionShape2D" parent="." unique_id=610253990]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ys5ts")

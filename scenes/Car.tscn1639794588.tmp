@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c043bsxljyc26"]
+
+[ext_resource type="Script" uid="uid://c408eaeyvxc8h" path="res://scripts/car.gd" id="1_qn377"]
+[ext_resource type="Texture2D" uid="uid://24hexrhj5g6g" path="res://addons/cardriver2d/top_down_car.svg" id="2_ys5ts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt2eu"]
+size = Vector2(113.5, 52)
+
+[node name="car" type="Area2D" unique_id=141635981]
+script = ExtResource("1_qn377")
+
+[node name="carcol" type="CollisionShape2D" parent="." unique_id=728759142]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_qt2eu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=981397992]
+texture = ExtResource("2_ys5ts")
