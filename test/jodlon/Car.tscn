@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cvly0snxyb1w7"]
+
+[ext_resource type="Script" uid="uid://cwdw66dyr2u8j" path="res://test/jodlon/car2.gd" id="1_m8wwq"]
+[ext_resource type="Texture2D" uid="uid://cpcu8yi7c6vhs" path="res://assets/cars-spritesheet.png" id="2_5408b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15dy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5408b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5408b"]
+points = PackedVector2Array(27, 56, -27, 56, -27, -45, -22, -57, 0, -61, 23, -57, 28, -45)
+
+[sub_resource type="Gradient" id="Gradient_5408b"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_15dy8"]
+gradient = SubResource("Gradient_5408b")
+width = 48
+height = 114
+use_hdr = true
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5408b"]
+polygon = PackedVector2Array(-26, -50, -27, -7, 27, -7, 27, -50, 0, -18)
+
+[node name="Car" type="CharacterBody2D" unique_id=884293154]
+motion_mode = 1
+script = ExtResource("1_m8wwq")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=200766748]
+sprite_frames = SubResource("SpriteFrames_15dy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228446256]
+shape = SubResource("ConvexPolygonShape2D_5408b")
+
+[node name="front" type="Marker2D" parent="." unique_id=68812732]
+position = Vector2(0, -32)
+
+[node name="back" type="Marker2D" parent="." unique_id=1786261663]
+position = Vector2(0, 32)
+
+[node name="swiatlo" type="PointLight2D" parent="." unique_id=812141729]
+position = Vector2(7.1054274e-15, -23)
+scale = Vector2(13.404316, 2.614623)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_15dy8")
+offset = Vector2(0, -50)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=278552473]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_5408b")
