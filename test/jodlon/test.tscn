@@ -1,32 +1,44 @@
 [gd_scene format=3 uid="uid://cqdy1inyhnd4a"]
 
-[ext_resource type="PackedScene" uid="uid://c043bsxljyc26" path="res://test/wspolne/Car.tscn" id="1_hi6dt"]
-[ext_resource type="Script" uid="uid://cwdw66dyr2u8j" path="res://test/jodlon/car2.gd" id="2_pc3m3"]
+[ext_resource type="PackedScene" uid="uid://cvly0snxyb1w7" path="res://test/jodlon/Car.tscn" id="3_hi6dt"]
 [ext_resource type="Texture2D" uid="uid://dxdrdsipfvypa" path="res://assets/obwodnica-trojmiasta-osowa-gdansk.jpg" id="3_tl0hl"]
+[ext_resource type="PackedScene" uid="uid://d3viiosr40hya" path="res://test/jodlon/example_player.tscn" id="4_pc3m3"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_65205"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hi6dt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc3m3"]
+size = Vector2(89, 20)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hi6dt"]
+polygon = PackedVector2Array(511, 193, 666, 250, 643, 131)
 
 [node name="test" type="Node2D" unique_id=91051677]
 
-[node name="car" parent="." unique_id=141635981 instance=ExtResource("1_hi6dt")]
-position = Vector2(372, 259)
-scale = Vector2(0.22954072, 0.22954072)
-script = ExtResource("2_pc3m3")
+[node name="collidable obj" type="StaticBody2D" parent="." unique_id=826688134]
+physics_material_override = SubResource("PhysicsMaterial_hi6dt")
 
-[node name="Camera2D" type="Camera2D" parent="car" unique_id=508196345]
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1534751712]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1682757142]
-position = Vector2(167, 145)
-rotation = -0.046904616
-scale = Vector2(26.563753, 1.3996714)
-shape = SubResource("SegmentShape2D_65205")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collidable obj" unique_id=1246589273]
+position = Vector2(167.5, 149)
+shape = SubResource("RectangleShape2D_pc3m3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1928668419]
 z_index = -1
-position = Vector2(585, 347)
+position = Vector2(589, 350)
 scale = Vector2(0.6019062, 0.6019062)
 texture = ExtResource("3_tl0hl")
+
+[node name="ExamplePlayer" parent="." unique_id=289049054 instance=ExtResource("4_pc3m3")]
+position = Vector2(770, 492)
+
+[node name="Car" parent="." unique_id=1257720633 instance=ExtResource("3_hi6dt")]
+position = Vector2(731, 363)
+
+[node name="Camera2D" type="Camera2D" parent="Car" unique_id=286712674]
+zoom = Vector2(1.5, 1.5)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1746682695]
+color = Color(0.27387273, 0.27387273, 0.27387273, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=788379478]
+position = Vector2(284, 88)
+occluder = SubResource("OccluderPolygon2D_hi6dt")
