@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://cqdy1inyhnd4a"]
 
-[ext_resource type="PackedScene" uid="uid://c043bsxljyc26" path="res://scenes/Car.tscn" id="2_hrq6i"]
-[ext_resource type="Texture2D" uid="uid://dxdrdsipfvypa" path="res://assets/obwodnica-trojmiasta-osowa-gdansk.jpg" id="3_65205"]
-[ext_resource type="Script" uid="uid://cwdw66dyr2u8j" path="res://car2.gd" id="3_tbfq4"]
+[ext_resource type="PackedScene" uid="uid://c043bsxljyc26" path="res://test/wspolne/Car.tscn" id="1_hi6dt"]
+[ext_resource type="Script" uid="uid://cwdw66dyr2u8j" path="res://test/jodlon/car2.gd" id="2_pc3m3"]
+[ext_resource type="Texture2D" uid="uid://dxdrdsipfvypa" path="res://assets/obwodnica-trojmiasta-osowa-gdansk.jpg" id="3_tl0hl"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_65205"]
 
 [node name="test" type="Node2D" unique_id=91051677]
 
-[node name="car" parent="." unique_id=141635981 instance=ExtResource("2_hrq6i")]
+[node name="car" parent="." unique_id=141635981 instance=ExtResource("1_hi6dt")]
 position = Vector2(372, 259)
 scale = Vector2(0.22954072, 0.22954072)
-script = ExtResource("3_tbfq4")
+script = ExtResource("2_pc3m3")
 
 [node name="Camera2D" type="Camera2D" parent="car" unique_id=508196345]
 zoom = Vector2(3, 3)
@@ -29,4 +29,4 @@ shape = SubResource("SegmentShape2D_65205")
 z_index = -1
 position = Vector2(585, 347)
 scale = Vector2(0.6019062, 0.6019062)
-texture = ExtResource("3_65205")
+texture = ExtResource("3_tl0hl")
