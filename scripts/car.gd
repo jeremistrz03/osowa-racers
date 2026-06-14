@@ -14,18 +14,27 @@ extends CharacterBody2D
 ## Manages the break speed of the car. The higher it is, the faster the car decelerates from a velocity higher than 0.
 @export var break_speed: float = 2.0
 ## Holds the maximum speed of the car. Remember - as of now, max speed is always slightly overshot because the code isn't as clean yet, but that will likely change in the future.
-@export var max_speed: float = 600.0
+@export var max_speed: float = 1000.0
 ## Manages the maximum turn strength of the car. The current turn strength of the car is highest at the speed 300 (or also, because of Godot's inverted y axis, it's -300).		
 @export var turn_strength: float = 3.0
 ## This number is the velocity at which the car turns the best. At default, the best turning speed for the car is 300. This, of course, can be changed.
 @export var most_ideal_turn_speed: float = 250.0
 ## With this varible, you can decide if you want Particles or not. If you want to not have it toggle-able, but rather not have particles at all, simply delete the [code]exhaust_particles.tres[/code].
 @export var particles: bool = true
+## Speed of deceleration when not accelerating
+@export var deceleration_factor: float = 5
+## friction of the wheels to road
+@export var friction_rd: float = 3000
+# odsrodkowa
+
 #endregion exported variables
 
 #region NOT exported class variables
 ## The rotated velocity vector of the car. Since the normal ]velocity vector is solely based on the global Vector2. It also can't be in the [code]process function[/code], because it doesn't work when constantly gets redeclared.
 var rotated_velocity_vector: Vector2
+var odsrodkowa: float
+var previous_rotation := 0.0
+var rotation_speed := 0.0
 #endregion NOT exported class variables
 
 func _process(delta: float) -> void:
@@ -86,16 +95,41 @@ func _process(delta: float) -> void:
 	# Handles the rotation during the input - the if conditionals above weren't enough to handle the rotation itself.
 	#endregion rotation
 	
+	#region falling out the road
+	var rotation_delta = wrapf(rotation - previous_rotation, -PI, PI)
+	rotation_speed = rotation_delta / delta
+	previous_rotation = rotation
+
+	var speed = velocity.length()
+	odsrodkowa = speed * abs(rotation_speed)
+
+	if is_nan(odsrodkowa) or is_inf(odsrodkowa):
+		odsrodkowa = 0
+		
+	#endregion falling out the road
+	
 	#region vector math
-	rotated_velocity_vector.y += velocity_input * acceleration_factor * delta * 60
-	# Recursively adds to the rotated velocity vector of the car.
-	
-	rotated_velocity_vector.rotated(deg_to_rad(rotation))
-	# Rotates the rotated velocity vector of the player.
-	
-	velocity = rotated_velocity_vector.rotated(rotation)
+	if friction_rd > odsrodkowa:
+		#rotated_velocity_vector.rotated(deg_to_rad(0))
+		rotated_velocity_vector.y += velocity_input * acceleration_factor * delta * 60
+		# Recursively adds to the rotated velocity vector of the car.
+		
+		rotated_velocity_vector.rotated(deg_to_rad(rotation))
+		# Rotates the rotated velocity vector of the player.
+		
+		velocity = rotated_velocity_vector.rotated(rotation)
 	# Assigns the rotated 'rotated_velocity_vector' to the actual velocity
 	#endregion vector math
+	
+	
+	print("odsrodkowa = ", odsrodkowa, " speed = ", speed, " rotation = ", rotation_speed)
+	
+	#region deceleration
+	if -rotated_velocity_vector.y > 0 and velocity_input == 0: # Checks if the car is currently breaking ( [breaking] = [is moving forward and player is holding the deccelerate key] )
+		rotated_velocity_vector.y += deceleration_factor / 2 # Deccelerates quickly.
+	if -rotated_velocity_vector.y < 0 and velocity_input == 0: # Checks if the car is currently breaking ( [breaking] = [is moving backward and player is holding the accelerate key] )
+		rotated_velocity_vector.y -= deceleration_factor / 2 # Deccelerates quickly.
+	#endregion deceleration
 	
 	#region breaks
 	if -rotated_velocity_vector.y > 0 and velocity_input == 1: # Checks if the car is currently breaking ( [breaking] = [is moving forward and player is holding the deccelerate key] )
