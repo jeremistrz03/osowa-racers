@@ -22,9 +22,9 @@ extends CharacterBody2D
 ## With this varible, you can decide if you want Particles or not. If you want to not have it toggle-able, but rather not have particles at all, simply delete the [code]exhaust_particles.tres[/code].
 @export var particles: bool = true
 ## Speed of deceleration when not accelerating
-@export var deceleration_factor: float = 5
+@export var deceleration_factor: float = 10
 ## friction of the wheels to road
-@export var friction_rd: float = 3000
+@export var friction_rd: float = 2000
 # odsrodkowa
 
 #endregion exported variables
@@ -109,20 +109,19 @@ func _process(delta: float) -> void:
 	#endregion falling out the road
 	
 	#region vector math
+	rotated_velocity_vector.y += velocity_input * acceleration_factor * delta * 60
+	# Recursively adds to the rotated velocity vector of the car.
+	rotated_velocity_vector.rotated(deg_to_rad(rotation))
+	# Rotates the rotated velocity vector of the player.
 	if friction_rd > odsrodkowa:
-		#rotated_velocity_vector.rotated(deg_to_rad(0))
-		rotated_velocity_vector.y += velocity_input * acceleration_factor * delta * 60
-		# Recursively adds to the rotated velocity vector of the car.
-		
-		rotated_velocity_vector.rotated(deg_to_rad(rotation))
-		# Rotates the rotated velocity vector of the player.
-		
 		velocity = rotated_velocity_vector.rotated(rotation)
-	# Assigns the rotated 'rotated_velocity_vector' to the actual velocity
+		# Assigns the rotated 'rotated_velocity_vector' to the actual velocity
+	else:
+		print("odsrodkowa = ", odsrodkowa, " speed = ", speed, " rotation = ", rotation_speed)
 	#endregion vector math
 	
 	
-	print("odsrodkowa = ", odsrodkowa, " speed = ", speed, " rotation = ", rotation_speed)
+	
 	
 	#region deceleration
 	if -rotated_velocity_vector.y > 0 and velocity_input == 0: # Checks if the car is currently breaking ( [breaking] = [is moving forward and player is holding the deccelerate key] )

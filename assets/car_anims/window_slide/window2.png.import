@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqp3rgdk0k2v2"
-path="res://.godot/imported/window3.png-b1234ac1e7263dd18bb1843f6abab1e4.ctex"
+uid="uid://cgn5nt0hrj5uu"
+path="res://.godot/imported/window2.png-0d507732cd5abb6a56580a8583a48312.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/window3.png"
-dest_files=["res://.godot/imported/window3.png-b1234ac1e7263dd18bb1843f6abab1e4.ctex"]
+source_file="res://assets/car_anims/window_slide/window2.png"
+dest_files=["res://.godot/imported/window2.png-0d507732cd5abb6a56580a8583a48312.ctex"]
 
 [params]
 
