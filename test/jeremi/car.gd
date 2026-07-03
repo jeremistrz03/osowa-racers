@@ -24,7 +24,7 @@ extends CharacterBody2D
 ## Speed of deceleration when not accelerating
 @export var deceleration_factor: float = 10
 ## friction of the wheels to road
-@export var friction_rd: float = 2000
+@export var friction_rd: float = 5000
 # odsrodkowa
 
 #endregion exported variables

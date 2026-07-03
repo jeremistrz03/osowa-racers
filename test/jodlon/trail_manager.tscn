@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ob0vwf8sjmnj"]
+
+[ext_resource type="Script" uid="uid://tj6e7cl5j3yf" path="res://test/jodlon/trail_manager.gd" id="1_52k5c"]
+
+[node name="TrailManager" type="Node2D" unique_id=1232562043]
+script = ExtResource("1_52k5c")

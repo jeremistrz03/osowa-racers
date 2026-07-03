@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvly0snxyb1w7"]
 
-[ext_resource type="Script" uid="uid://cwdw66dyr2u8j" path="res://test/jodlon/car2.gd" id="1_m8wwq"]
+[ext_resource type="Script" uid="uid://dn0cml5crep0c" path="res://test/jodlon/car_final.gd" id="1_5408b"]
 [ext_resource type="Texture2D" uid="uid://cpcu8yi7c6vhs" path="res://assets/cars-spritesheet.png" id="2_5408b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_15dy8"]
@@ -31,8 +31,9 @@ fill_to = Vector2(0.5, 1)
 polygon = PackedVector2Array(-26, -50, -27, -7, 27, -7, 27, -50, 0, -18)
 
 [node name="Car" type="CharacterBody2D" unique_id=884293154]
+position = Vector2(1, 0)
 motion_mode = 1
-script = ExtResource("1_m8wwq")
+script = ExtResource("1_5408b")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=200766748]

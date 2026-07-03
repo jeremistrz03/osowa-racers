@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://8gk60w31500c"]
+
+[ext_resource type="Script" uid="uid://c87kj7xcoq38u" path="res://test/jodlon/car_rigid.gd" id="1_ou73p"]
+[ext_resource type="Texture2D" uid="uid://cpcu8yi7c6vhs" path="res://assets/cars-spritesheet.png" id="2_ca3lo"]
+[ext_resource type="PackedScene" uid="uid://fjgqe5ronn8x" path="res://test/jodlon/SmokeParticles.tscn" id="3_ca3lo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ou73p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15dy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ca3lo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5408b"]
+points = PackedVector2Array(27, 56, -27, 56, -27, -45, -22, -57, 0, -61, 23, -57, 28, -45)
+
+[sub_resource type="Gradient" id="Gradient_5408b"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_15dy8"]
+gradient = SubResource("Gradient_5408b")
+width = 48
+height = 114
+use_hdr = true
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5408b"]
+polygon = PackedVector2Array(-26, -50, -27, -7, 27, -7, 27, -50, 0, -18)
+
+[sub_resource type="Curve2D" id="Curve2D_ca3lo"]
+
+[node name="Car" type="RigidBody2D" unique_id=645943118]
+physics_material_override = SubResource("PhysicsMaterial_ou73p")
+gravity_scale = 0.0
+angular_damp_mode = 1
+angular_damp = 10.0
+script = ExtResource("1_ou73p")
+metadata/_edit_group_ = true
+
+[node name="SmokeParticlesRearR" parent="." unique_id=912269000 instance=ExtResource("3_ca3lo")]
+position = Vector2(20, 44)
+emitting = false
+
+[node name="SmokeParticlesRearL" parent="." unique_id=265879567 instance=ExtResource("3_ca3lo")]
+position = Vector2(-20, 44)
+emitting = false
+
+[node name="SmokeParticlesFrontR" parent="." unique_id=700204958 instance=ExtResource("3_ca3lo")]
+position = Vector2(20, -39)
+emitting = false
+
+[node name="SmokeParticlesFrontL" parent="." unique_id=758735022 instance=ExtResource("3_ca3lo")]
+position = Vector2(-20, -38)
+emitting = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=200766748]
+sprite_frames = SubResource("SpriteFrames_15dy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228446256]
+shape = SubResource("ConvexPolygonShape2D_5408b")
+
+[node name="front" type="Marker2D" parent="." unique_id=68812732]
+position = Vector2(0, -32)
+
+[node name="back" type="Marker2D" parent="." unique_id=1786261663]
+position = Vector2(0, 32)
+
+[node name="swiatlo" type="PointLight2D" parent="." unique_id=812141729]
+position = Vector2(7.1054274e-15, -23)
+scale = Vector2(13.404316, 2.614623)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_15dy8")
+offset = Vector2(0, -50)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=278552473]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_5408b")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=115903017]
+curve = SubResource("Curve2D_ca3lo")
+
+[node name="FR" type="Node2D" parent="." unique_id=1129442738]
+position = Vector2(26, -32)
+
+[node name="FL" type="Node2D" parent="." unique_id=1086624075]
+position = Vector2(-26, -32)
+
+[node name="RR" type="Node2D" parent="." unique_id=918377554]
+position = Vector2(26, 32)
+
+[node name="RL" type="Node2D" parent="." unique_id=1948712710]
+position = Vector2(-26, 32)

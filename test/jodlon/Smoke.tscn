@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c6q0knpsdy1fv"]
+
+[ext_resource type="Texture2D" uid="uid://hwupg0bu5taw" path="res://assets/smoke/Sprite-0001.png" id="1_5gerd"]
+[ext_resource type="Texture2D" uid="uid://bojc4o8ii2s5s" path="res://assets/smoke/Sprite-0002.png" id="2_blo6l"]
+[ext_resource type="Texture2D" uid="uid://5woyctu8haf6" path="res://assets/smoke/Sprite-0003.png" id="3_bfsfc"]
+[ext_resource type="Texture2D" uid="uid://c5c8udwum2eiv" path="res://assets/smoke/Sprite-0004.png" id="4_vb2by"]
+[ext_resource type="Texture2D" uid="uid://vcfwne86d6a5" path="res://assets/smoke/Sprite-0005.png" id="5_p12jq"]
+[ext_resource type="Texture2D" uid="uid://b3e1rdltwc7g1" path="res://assets/smoke/Sprite-0006.png" id="6_tl6fn"]
+[ext_resource type="Texture2D" uid="uid://drexm0tvecisf" path="res://assets/smoke/Sprite-0007.png" id="7_iunkq"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ya2nh"]
+frames = 7
+frame_0/texture = ExtResource("1_5gerd")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("2_blo6l")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("3_bfsfc")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("4_vb2by")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("5_p12jq")
+frame_4/duration = 0.2
+frame_5/texture = ExtResource("6_tl6fn")
+frame_5/duration = 0.2
+frame_6/texture = ExtResource("7_iunkq")
+frame_6/duration = 0.2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5gerd"]
+particle_flag_disable_z = true
+initial_velocity_min = 39.68
+initial_velocity_max = 111.11
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.3800001
+gravity = Vector3(0, 0, 0)
+
+[node name="Smoke" type="GPUParticles2D" unique_id=1232130398]
+texture_filter = 1
+emitting = false
+amount = 1
+texture = SubResource("AnimatedTexture_ya2nh")
+lifetime = 1.4000000000000001
+process_material = SubResource("ParticleProcessMaterial_5gerd")

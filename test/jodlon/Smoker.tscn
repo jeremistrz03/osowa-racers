@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dhy0rethsj0yr"]
+
+[ext_resource type="Script" uid="uid://btpbiffkpdag1" path="res://test/jodlon/smoker.gd" id="1_o045m"]
+[ext_resource type="PackedScene" uid="uid://c6q0knpsdy1fv" path="res://test/jodlon/Smoke.tscn" id="2_1qhqj"]
+
+[node name="Smoker" type="Node2D" unique_id=42114186]
+script = ExtResource("1_o045m")
+
+[node name="Smoke" parent="." unique_id=1232130398 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke2" parent="." unique_id=229235978 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke3" parent="." unique_id=1162848915 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke4" parent="." unique_id=139357803 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke5" parent="." unique_id=1753619244 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke6" parent="." unique_id=1789917344 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke7" parent="." unique_id=1984253851 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke8" parent="." unique_id=1174438102 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke9" parent="." unique_id=714486306 instance=ExtResource("2_1qhqj")]
+
+[node name="Smoke10" parent="." unique_id=948373574 instance=ExtResource("2_1qhqj")]

@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://cqdy1inyhnd4a"]
 
-[ext_resource type="PackedScene" uid="uid://cvly0snxyb1w7" path="res://test/jodlon/Car.tscn" id="3_hi6dt"]
+[ext_resource type="PackedScene" uid="uid://8gk60w31500c" path="res://test/jodlon/CarRigid.tscn" id="2_h61ug"]
 [ext_resource type="Texture2D" uid="uid://dxdrdsipfvypa" path="res://assets/obwodnica-trojmiasta-osowa-gdansk.jpg" id="3_tl0hl"]
-[ext_resource type="PackedScene" uid="uid://d3viiosr40hya" path="res://test/jodlon/example_player.tscn" id="4_pc3m3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hi6dt"]
 
@@ -27,19 +26,16 @@ position = Vector2(589, 350)
 scale = Vector2(0.6019062, 0.6019062)
 texture = ExtResource("3_tl0hl")
 
-[node name="ExamplePlayer" parent="." unique_id=289049054 instance=ExtResource("4_pc3m3")]
-position = Vector2(770, 492)
-
-[node name="Car" parent="." unique_id=1257720633 instance=ExtResource("3_hi6dt")]
-position = Vector2(731, 363)
-scale = Vector2(0.3, 0.3)
-
-[node name="Camera2D" type="Camera2D" parent="Car" unique_id=286712674]
-zoom = Vector2(3, 3)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1746682695]
 color = Color(0.27387273, 0.27387273, 0.27387273, 1)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=788379478]
 position = Vector2(284, 88)
 occluder = SubResource("OccluderPolygon2D_hi6dt")
+
+[node name="Car" parent="." unique_id=645943118 instance=ExtResource("2_h61ug")]
+position = Vector2(646, 336)
+angular_damp_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="Car" unique_id=1835351283]
+zoom = Vector2(2, 2)
